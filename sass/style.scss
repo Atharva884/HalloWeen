@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+*{
+    padding: 0; margin: 0;
+    box-sizing: border-box;
+    border: none; outline: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar{
+        width: .8rem;
+    }
+    &::-webkit-scrollbar-track{
+        background: #141215;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: #ef7819;
+    }
+}
+$main-color: #ef7819;
+$black: #141215;
+
+// Utility Classes
+body{
+    background: $black;
+}
+section{
+    padding: 3rem 9%;
+}
+@mixin btn {
+    padding: .8rem 1.8rem;
+    color: $black;
+    background: #fff;
+    font-size: 1.6rem;
+    margin: 2rem auto;
+    display: block;
+    cursor: pointer;
+
+    &:hover{
+        color: #fff;
+        background: $main-color;
+    }
+}
+@mixin grid($val, $gap){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: $gap;
+}
+@mixin para($font){
+    font-size: $font;
+    line-height: 1.5;
+    color: #fff;
+}
+.heading{
+    font-size: 4rem;
+    color: #fff;
+    text-align: center;
+
+    span{
+        color: $main-color;
+    }
+}
+
+
+
+// Header Section CSS
+header.head{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: $black;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 7%;
+
+    a.logo{
+        font-size: 2rem;
+        color: #fff;
+
+        i{
+            color: $main-color;
+            animation: float 3s infinite;
+        }
+    }
+    @keyframes float {
+        0%, 100%{
+            transform: translateY(-.5rem);
+        }
+        50%{
+            transform: translateY(.5rem);
+        }
+    }
+    .navbar{
+
+        a{
+            padding: 1.3rem;
+            color: #fff;
+            font-size: 1.8rem;
+
+            &:hover{
+                color: $main-color;
+            }
+        }
+    }
+    .nav-items{
+        display: inline-flex;
+        gap: 1.5rem;
+
+        i{
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+
+            &:hover{
+                transform: rotate(360deg);
+                color: $main-color;
+            }
+        }
+        i.bar{
+            display: none;
+        }
+    }
+}
+
+// Home Section CSS
+.home{
+    .home-container{
+        .home-wrapper{
+            .home-slide{
+                .home-img{
+                    img{
+                        width: 100%;
+                        height: 100vh;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+                }
+                .home-txt{
+                    position: absolute;
+                    top: 50%; left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    h1{
+                        font-size: 7rem;
+                        color: #ffff;
+                        font-weight: 300;
+                        text-align: center;
+                    }
+                    h4{
+                        text-align: center;
+                        margin: .8rem 0;
+                        font-size: 3.5rem;
+                        color: $main-color;
+                        font-weight: 600;
+                    }
+                    .btn{
+                        @include btn();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Product Section CSS
+section.product{
+    .product-container{
+        @include grid(27rem, 2rem);
+        margin-top: 2rem; 
+        
+        .product{
+            &:hover img{
+                transform: scale(1.2);
+            }
+            .pr-img{
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+            .pr-txt{
+                h2{
+                    margin: .5rem 0;
+                    font-size: 3rem;
+                    text-align: center;
+                    color: #fff;
+                }
+                h4{
+                    text-align: center;
+                    font-size: 2rem;
+                    color: #fff;
+                    font-weight: 700;
+                    margin: .8rem 0;
+
+                    span{
+                        font-size: 1.5rem;
+                        color: $main-color;
+                        text-decoration: $main-color line-through;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// About Section CSS
+.about{
+    background: url(../image/about-bt.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    .content{
+        position: absolute;
+        left: 10%; top: 32%;
+
+        h2{
+            font-size: 5rem;
+            color: $main-color;
+            margin: 1rem 0;
+        }
+        p{
+            @include para(1.5rem);
+            width: 40%;
+        }
+        .btn{
+            @include btn();
+            margin: 1.5rem 0;
+            width: 11rem;
+        }
+    }
+}
+
+// Arrival Section CSS
+section.arrival{
+    .arrival-container{
+        margin-top: 3rem;
+        .arrival-wrapper{
+            .arrival-card{
+                position: relative;
+                overflow: hidden;
+
+                &:hover img{
+                    transform: scale(1.2);
+                }
+                &:hover .extra{
+                    right: 1rem;
+                }
+                .arr-img{
+                    overflow: hidden;
+
+                    img{
+                        width: 100%;
+                        height: 70vh;
+                    }
+                }
+                .arr-txt{
+                    h2{
+                        font-size: 3rem;
+                        color: #fff;
+                        margin: 1rem 0;
+                        text-align: center;
+                    }
+                    h4{
+                        color: #fff;
+                        font-size: 2rem;
+                        text-align: center;
+                        margin-bottom: 1rem;
+
+                        span{
+                            color: $main-color;
+                            text-decoration: line-through $main-color;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+                .extra{
+                    position: absolute;
+                    right: -5rem; top: 1rem;
+
+                    span{
+                        padding: 1rem;
+                        background: #fff;
+                        border-radius: 50%;
+                        display: block;
+                        margin: .5rem 0;
+                        cursor: pointer;
+
+                        &:hover{
+                            background: $main-color;
+                        }
+                        &:hover i{
+                            color: #fff;
+                        }
+
+                        i{
+                            font-size: 1.8rem;
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Contact Section CSS
+section.contact{
+    .contact-container{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+
+        .map{
+            flex: 1 1 42rem;
+
+            iframe{
+                width: 100%;
+            }
+        }
+        .form{
+            background: #3b3c36;
+            flex: 1 1 42rem;
+
+            h2{
+                font-size: 3rem;
+                text-align: center;
+                margin: 1rem 0;
+                color: #fff;
+            }
+            .name,
+            .email,
+            .number,
+            .mess{
+                padding: 1rem;
+                background: $black;
+                margin: 1rem 1.5rem;
+                border-radius: .4rem;
+            }
+            input{
+                background: transparent;
+                font-size: 1.8rem;
+                text-transform: lowercase;
+                width: 100%;
+                color: #fff;
+            }
+            textarea{
+                background: transparent;
+                font-size: 1.6rem;
+                resize: none;
+                height: 24vh;
+                width: 100%;
+                color: #fff;
+            }            
+            .btn{
+                @include btn();
+                width: 14rem;
+            }
+        }
+    }
+}
+
+// Blog Section CSS
+section.blogs{
+    .blogs-container{
+        margin-top: 3rem;
+        @include grid(22rem, 2rem);
+        .blog-card{
+           
+            &:hover img{
+                transform: scale(1.2);
+            }
+            .blog-img{
+                overflow: hidden;
+                 
+                img{
+                    width: 100%;
+                    height: 45vh;
+                }
+            }
+            .blog-txt{
+                background: #282c35;
+                padding: 1rem;
+                h3{
+                    color: #fff;
+                    font-size: 2.5rem;
+                }
+                p{
+                    @include para(1.2rem);
+                    margin: 1rem 0;
+                }
+                .btn{
+                    @include btn();
+                    padding: .5rem 1.5rem;
+                    width: 35%;
+                    margin: 1rem 0;
+                }
+                .stats{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-top: .1rem solid $black;
+
+                    .left,
+                    .right{
+                        margin: .8rem 0;
+                        i,
+                        span{
+                            font-size: 1.6rem;
+                            color: $main-color;
+                        }
+                        span{
+                            color: #fff;
+                            margin-left: .4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Footer Section CSS
+section.footer{
+    .credit{
+        text-align: center;
+        font-size: 2rem;
+        color: #fff;
+
+        span{
+            color: $main-color;
+        }
+    }
+}
+
+
+
+
+// Media Queries
+@media (max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+    section{
+        padding: 2rem;
+    }
+    header{
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px){
+    header.head .nav-items i.bar{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 99%; left: 0; right: 0;
+        background: $black;
+        border-top: .2rem solid $black;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+        a{
+            display: block;
+        }
+    }
+    .navbar.active{
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .home .home-container .home-slide .home-img img{
+        object-fit: cover;
+    }
+    .about{
+        background-position: left;
+    }
+    .about .content{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+
+        p{
+            width: 31rem;
+            font-size: 1.8rem;
+            line-height: 1.8;
+        }
+    }
+}
+
+@media (max-width: 450px){
+    .home .home-container .swiper-button-next,
+    .home .home-container .swiper-button-prev{
+        display: none;
+    }
+    section.arrival .arrival-container .arrival-wrapper .arrival-card .arr-img img{
+        height: 60vh;
+    }
+}
